@@ -1,0 +1,68 @@
+Key Features
+Salary Structure Configuration
+
+Define salary components (fixed, variable, deductions) with customizable formulas (e.g., Net Salary = Base + Bonus − Insurance − Tax).
+
+Template wizards simplify setup for non-technical users.
+
+Monthly Payroll Processing
+
+Auto-fetch attendance/performance data (overtime, leave deductions, bonus multipliers).
+
+Generate draft payroll with itemized calculations; allow manual adjustments (e.g., prorated salaries for new hires) with audit trails.
+
+Tax Calculation & Reporting
+
+Auto-calculate individual income tax using up-to-date rates and annualized withholding.
+
+Export tax filing reports (monthly/annual summaries).
+
+Social Insurance & Housing Fund
+
+Track employee/employer contributions based on local policies.
+
+Auto-deduct employee portions during payroll; generate payment reports.
+
+Payslip Distribution
+
+Publish e-payslips via self-service portals (employee-specific access).
+
+Export PDFs for offline distribution.
+
+Bank Transfer Integration
+
+Generate payment files compatible with major banks for bulk salary transfers.
+
+Annual Bonuses & Adjustments
+
+Calculate year-end bonuses (optional separate tax treatment).
+
+Support batch salary adjustments (e.g., performance-based raises).
+
+Benefits Management
+
+Track statutory and custom benefits (insurance, unused leave payouts, allowances).
+
+Reporting & Analytics
+
+Generate cost analyses (total payroll, department breakdowns, benefits expenses).
+
+Technical Architecture (On-Premise)
+Rule Engine: Handles dynamic salary formulas; integrates with attendance/performance APIs.
+
+Data Security: Encrypted storage for sensitive data (bank accounts); strict access controls.
+
+Compliance: Regular updates for tax/social insurance rules; validation checks (e.g., minimum wage alerts).
+
+Interoperability: Export tools for tax/bank systems; SFTP support for file transfers.
+
+Design Principles
+Accuracy & Compliance: Preloaded tax/benefit rules; error alerts for manual overrides.
+
+Ease of Use: Guided setup; one-click payroll generation.
+
+Automation: Sync with attendance/performance data to minimize manual input.
+
+Security: Role-based access, encryption, and audit logs.
+
+Employee Experience: Transparent payslips, self-service tools, and salary simulators.
