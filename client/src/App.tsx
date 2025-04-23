@@ -24,6 +24,26 @@ function Router() {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
+  async function handleLogin(username: string, password: string) {
+    try {
+      const res = await apiRequest('POST', '/api/auth/login', { username, password });
+      const userData = await res.json();
+      setUser(userData);
+      toast({
+        title: "登录成功",
+        description: `欢迎回来，${userData.username}！`,
+      });
+      return true;
+    } catch (error) {
+      toast({
+        title: "登录失败",
+        description: "用户名或密码无效",
+        variant: "destructive",
+      });
+      return false;
+    }
+  }
+
   useEffect(() => {
     async function checkAuth() {
       try {
@@ -34,36 +54,24 @@ function Router() {
         if (res.ok) {
           const userData = await res.json();
           setUser(userData);
+          setLoading(false);
+        } else {
+          // 如果未登录，自动使用默认账户登录
+          const loginSuccess = await handleLogin('admin', 'admin123');
+          if (!loginSuccess) {
+            setLoading(false);
+          }
         }
       } catch (error) {
         console.error('Auth check failed', error);
-      } finally {
+        // 出错时也尝试自动登录
+        await handleLogin('admin', 'admin123');
         setLoading(false);
       }
     }
     
     checkAuth();
   }, []);
-
-  async function handleLogin(username: string, password: string) {
-    try {
-      const res = await apiRequest('POST', '/api/auth/login', { username, password });
-      const userData = await res.json();
-      setUser(userData);
-      toast({
-        title: "Login successful",
-        description: `Welcome back, ${userData.username}!`,
-      });
-      return true;
-    } catch (error) {
-      toast({
-        title: "Login failed",
-        description: "Invalid username or password",
-        variant: "destructive",
-      });
-      return false;
-    }
-  }
 
   async function handleLogout() {
     try {
